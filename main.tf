@@ -76,8 +76,8 @@ runcmd:
   - [ bash, -c, 'start_time=$(TZ=":America/Vancouver" date "+%Y-%m-%d %H:%M:%S.%N %Z"); echo "Running Wget - serve: $start_time" >> /root/cloud-init-run.log' ]
   - [ bash, -c, 'wget -P /tmp https://raw.githubusercontent.com/bashfulrobot/libvirt-module-helpers/main/serve >> /root/cloud-init-run.log 2>&1' ]
   - [ bash, -c, 'chmod +x /tmp/serve /tmp/kubeadm-install-controller.sh >> /root/cloud-init-run.log 2>&1' ]
-  - [ bash, -c, 'if [[ "${var.cni_cilium}" == "true" ]]; then echo "cilium" > /tmp/cni; fi >> /root/cloud-init-run.log 2>&1' ]
-  - [ bash, -c, 'if [[ "${var.cni_calico}" == "true" ]]; then echo "calico" > /tmp/cni; fi >> /root/cloud-init-run.log 2>&1' ]
+  - [ bash, -c, 'if [[ "${var.cni_cilium}" == "true" ]]; then echo "cilium" > /tmp/cni; fi' ]
+  - [ bash, -c, 'if [[ "${var.cni_calico}" == "true" ]]; then echo "calico" > /tmp/cni; fi' ]
   - [ bash, -c, '/tmp/kubeadm-install-controller.sh >> /root/cloud-init-run.log 2>&1' ]
   - [ bash, -c, 'echo "Cloud-init end: $(TZ=":America/Vancouver" date "+%Y-%m-%d %H:%M:%S.%N %Z")" >> /root/cloud-init-run.log' ]
 EOF
