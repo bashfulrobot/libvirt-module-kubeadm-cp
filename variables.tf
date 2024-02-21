@@ -100,6 +100,19 @@ variable "wait_for_lease" {
   default     = false
 }
 
+variable "cni_cilium" {
+  description = "Whether to use Cilium for the CNI"
+  type = bool
+  default = false
+}
+
+
+variable "cni_calico" {
+  description = "Whether to use Calico for the CNI"
+  type = bool
+  default = false
+}
+
 # variable "node_type" {
 #   description = "The type of node to deploy"
 #   type        = string
