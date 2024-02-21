@@ -79,7 +79,9 @@ runcmd:
   - [ bash, -c, 'export CNI="" >> /root/cloud-init-run.log 2>&1' ]
   - [ bash, -c, 'if [[ "${var.cni_cilium}" == "true" ]]; then export CNI="cilium"; fi >> /root/cloud-init-run.log 2>&1' ]
   - [ bash, -c, 'if [[ "${var.cni_calico}" == "true" ]]; then export CNI="calico"; fi >> /root/cloud-init-run.log 2>&1' ]
-  - [ bash, -c, 'echo "$CNI" >> /root/cloud-init-run.log 2>&1' ]
+  - [ bash, -c, 'if [[ "${var.cni_cilium}" == "true" ]]; then echo "Setting CNI to cilium"; export CNI="cilium"; else echo "CNI not set to cilium"; fi >> /root/cloud-init-run.log 2>&1' ]
+  - [ bash, -c, 'if [[ "${var.cni_calico}" == "true" ]]; then echo "Setting CNI to calico"; export CNI="calico"; else echo "CNI not set to calico"; fi >> /root/cloud-init-run.log 2>&1' ]
+  - [ bash, -c, 'echo "CNI value: $CNI" >> /root/cloud-init-run.log 2>&1' ]
   - [ bash, -c, '/tmp/kubeadm-install-controller.sh >> /root/cloud-init-run.log 2>&1' ]
   - [ bash, -c, 'echo "Cloud-init end: $(TZ=":America/Vancouver" date "+%Y-%m-%d %H:%M:%S.%N %Z")" >> /root/cloud-init-run.log' ]
 EOF
