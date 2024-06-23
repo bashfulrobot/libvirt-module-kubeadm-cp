@@ -79,7 +79,7 @@ variable "vm_os_disk_size" {
 variable "image_url" {
   description = "The URL of the image used to deploy the VMs"
   type        = string
-  default     = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+  default     = "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img"
 }
 
 variable "autostart" {
