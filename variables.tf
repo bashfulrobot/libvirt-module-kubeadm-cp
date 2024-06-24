@@ -52,6 +52,12 @@ variable "network_id" {
   default     = "default"
 }
 
+# My modules are designed for NAT or ROUTED
+variable "network_mode" {
+  description = "The network mode for the k8s cluster network"
+  type        = string
+  default     = "nat"
+}
 variable "cluster_name" {
   description = "A name to provide for the k8s cluster"
   type        = string
@@ -105,7 +111,6 @@ variable "cni_cilium" {
   type = bool
   default = false
 }
-
 
 variable "cni_calico" {
   description = "Whether to use Calico for the CNI"
